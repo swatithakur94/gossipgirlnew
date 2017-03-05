@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+
+	<link rel="import" href="head-meta.html">
+
+<style>
+.btn-xl {
+    padding: 30px 50px;
+    font-size: 15px;
+    border-radius: 70px;
+}
+
+.image {
+    opacity: 0.4;
+    filter: alpha(opacity=40); /* For IE8 and earlier */
+}
+
+.btn-outline {
+    background-color: transparent;
+   
+    transition: all .5s;
+}
+
+.btn-primary.btn-outline {
+    color: #ffbcf1;
+}
+
+.btn-success.btn-outline {
+    color: #5cb85c;
+}
+
+.btn-info.btn-outline {
+    color: #5bc0de;
+}
+
+.btn-warning.btn-outline {
+    color: #f0ad4e;
+}
+
+.btn-danger.btn-outline {
+    color: #ffbcf1;
+}
+
+.btn-primary.btn-outline:hover,
+.btn-success.btn-outline:hover,
+.btn-info.btn-outline:hover,
+.btn-warning.btn-outline:hover,
+.btn-danger.btn-outline:hover {
+    color: #fff;
+}
+
+
+
+.footer {
+    position: fixed; bottom: 0;
+	margin: auto;
+	width: 100%;
+	 line-height: 50px;
+	text-align: center;
+	color: black;
+	/* Set the fixed height of the footer here */
+	height: 40px;
+	background-color: #e8e1e6;
+	z-index: 100;}
+
+
+.53jh {
+    background-color:#b30000;
+    border-bottom: 1px solid #133783;
+    min-height: 42px;
+}
+
+
+.back{
+    height: 95px;
+    min-width: 980px;
+    background-color:#b30000;
+}
+
+
+label {
+    color: #fff;
+    font-weight: normal;
+    padding-left: 1px;
+}
+footer{
+    position: fixed;
+	bottom: 0;
+	margin: auto;
+	width: 100%;
+	 line-height: 50px;
+	text-align: center;
+	color: #fcd9da;
+	/* Set the fixed height of the footer here */
+	height: 40px;
+	background-color: #123455;
+	z-index: 100;
+}
+table {
+    display: table;
+    border-collapse: separate;
+    border-spacing: 5px;
+    border-color: grey;
+}
+div{
+display:block;}
+
+}
+
+</style>
+
+</head>
+
+<script src ="app.js"></script>
+<script src ="indexService.js"></script>
+<script src ="indexController.js"></script>
+
+<script src ="blogs/BlogService.js"></script>
+<script src ="blogs/BlogController.js"></script>
+
+<script src ="forums/ForumService.js"></script>
+<script src ="forums/ForumController.js"></script>
+
+<script src ="profile/ProfileService.js"></script>
+<script src ="profile/ProfileController.js"></script>
+
+<script src ="friends/FriendService.js"></script>
+<script src ="friends/FriendController.js"></script>
+
+<script src ="events/EventService.js"></script>
+<script src ="events/EventController.js"></script>
+
+<script src ="jobs/JobService.js"></script>
+<script src ="jobs/JobController.js"></script>
+
+<script src ="chat/ChatService.js"></script>
+<script src ="chat/ChatController.js"></script>
+
+<script src ="groupchat/GroupChatService.js"></script>
+<script src ="groupchat/GroupChatController.js"></script>
+
+<body style="background-color:#FFE4E1">
+
+<nav class="navbar navbar-default"  border: none;" ng-controller="indexController">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+   
+      <a class="navbar-brand" href="#/profile" style="margin-top: -10px;"><img
+				src="resources/images/4.jpg"  class="img-circle"
+				alt="logo" width="50" height="50"></a><span
+				style="font-size: xx-large; line-height: 60px; margin-left: 450px ;font-family:forte;">GoSSipGIRl</span>
+				 <slogan style=" position:absolute;left:10%;right:5%;top:45%;width: 70%;text-align: center;font-size: 15px;font-style:bold;font-family:forte;">-XOXO</slogan></myhead>
+	
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav navbar-left" ng-show="LoginStatus">
+      
+      
+      	<li><a href="#/aboutus" style="color: black;">About Us</a></li>
+      	
+      </ul>
+      
+      <ul class="nav navbar-nav navbar-left" ng-show="!LoginStatus">
+      
+      
+      	
+      </ul>
+      
+      <ul class="nav navbar-nav navbar-right">
+      	<li>
+        	<div class="container-fluid">
+        	
+        		<div class="row" ng-show="LoginStatus">
+        		
+        			<div class="col-lg-4">
+        				<label style="color:black;">Email</label>
+        				<input type="text" class="form-control" name="username" placeholder="Enter email" ng-model="LoginEmail">
+        	
+        			</div>
+        			
+        			<div class="col-lg-4">
+        				<label style="color:black;">Password</label>	
+        				<input type="password" class="form-control" name="password" placeholder="Enter password" ng-model="LoginPassword">
+        			</div>
+        		
+        			<div class="col-lg-4">
+        				<br>
+        				<input type="button" class="btn btn-danger" value="Login" ng-click="Login()">
+        			</div>
+        		
+        		</div>
+        		
+        		<div class="row" ng-show="!LoginStatus">
+        		
+        		
+        		
+        			<div class="col-lg-4">
+        				<br>
+        				<label style="color:black;">Welcome {{LoginEmail}}<span class="glyphicon glyphicon-heart"></span> </label>
+        			</div>
+        			<div class="col-lg-4">
+					<a href="#/aboutus" title="About Us"><i
+					class="fa fa-info-circle fa-2x pull-right" aria-hidden="true"></i></a>
+				</div>
+        			
+        			<div class="col-lg-4">
+        				<br>
+        				<button class="fa fa-power-off fa-2x pull-right" ng-click="logout()"></button>
+        			</div>
+        		</div>
+        		
+        		
+        		
+        		<div class="row" ng-show="InvalidLogin">
+        		
+        			<br>
+        		
+        			<div class="col-lg-12">
+        				<span class="alert alert-danger" style="width: 100%; margin: auto;">Invalid Login</span>
+        			</div>
+        		
+        			<br>
+        			<br>
+        		</div>
+        	
+        	</div>
+        	
+        	
+        </li>
+      </ul>
+    
+    </div>
+  </div>
+</nav>
+
+<div class ="container">
+  <div ng-view>
+  </div>
+</div>  		
+		<br>
+		<br>
+		<br>
+
+		
+	<div class="footer" style="position: fixed; bottom: 0px;">
+	
+	Copyright&copy 2016 - <strong>GoSSip Girl</strong>
+	
+	</div>
+		
+			
+	</body>
+
+
+</body>
+</html>
